@@ -79,17 +79,14 @@ public class Robot {
 	 * @param newY the new Y position to move the robot to
 	 * @return true if robot gets moved, false otherwise
 	 */
-	private boolean moveToPosition(final int newX, final int newY) throws PositionOutOfBoundException {
-		boolean returnValue = true;
+	private void moveToPosition(final int newX, final int newY){
 		if (this.isBatteryEnoughToMove()) {
 			this.environment.move(newX, newY);
 			this.consumeBatteryForMovement();
 			this.log("Moved to position(" + newX + "," + newY + ").");
 		} else {
-			this.log("Can not move to position(" + newX + "," + newY + "). Not enough battery.");
-			returnValue = false;
+			throw new NotEnoughBatteryException(this.getBatteryLevel());
 		}
-		return returnValue;
 	}
 
 	/**
