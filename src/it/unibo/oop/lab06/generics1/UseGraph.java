@@ -9,8 +9,7 @@ public final class UseGraph {
     }
 
     /**
-     * @param args
-     *            ignored
+     * @param args ignored
      */
     public static void main(final String... args) {
         final Graph<String> g = new GraphImpl<>();
